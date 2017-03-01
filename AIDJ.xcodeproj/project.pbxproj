@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33A2FE2A6F782036A4C7D960 /* Pods_AIDJ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00521378025F8DE158C86743 /* Pods_AIDJ.framework */; };
+		90069F1A377ADC6A677ACA5E /* Pods_AIDJTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48004D18E9558AE81F586FC5 /* Pods_AIDJTests.framework */; };
+		AB0DBBF61E642C1D0018BCCD /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0DBBF51E642C1D0018BCCD /* SongCell.swift */; };
+		ABA095481E6013A3006D7C15 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABA095471E6013A3006D7C15 /* MediaPlayer.framework */; };
 		ABF7B37F1E5ED34E00C65557 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF7B37E1E5ED34E00C65557 /* AppDelegate.swift */; };
 		ABF7B3811E5ED34E00C65557 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF7B3801E5ED34E00C65557 /* ViewController.swift */; };
 		ABF7B3841E5ED34E00C65557 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF7B3821E5ED34E00C65557 /* Main.storyboard */; };
@@ -14,6 +18,7 @@
 		ABF7B3891E5ED34E00C65557 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF7B3871E5ED34E00C65557 /* LaunchScreen.storyboard */; };
 		ABF7B3941E5ED34F00C65557 /* AIDJTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF7B3931E5ED34F00C65557 /* AIDJTests.swift */; };
 		ABF7B39F1E5ED34F00C65557 /* AIDJUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF7B39E1E5ED34F00C65557 /* AIDJUITests.swift */; };
+		DE9C48DC7DA832C4D160E252 /* Pods_AIDJUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0371EDA479F7CA40BE600362 /* Pods_AIDJUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +38,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		ABB922021E63D82C00A79A65 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		00521378025F8DE158C86743 /* Pods_AIDJ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AIDJ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0371EDA479F7CA40BE600362 /* Pods_AIDJUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AIDJUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4095A221BA23812BD8C57B12 /* Pods-AIDJUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIDJUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AIDJUITests/Pods-AIDJUITests.release.xcconfig"; sourceTree = "<group>"; };
+		48004D18E9558AE81F586FC5 /* Pods_AIDJTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AIDJTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4956A2ADF45EC5984FDA7C2E /* Pods-AIDJUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIDJUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AIDJUITests/Pods-AIDJUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4BCB154513A0B92F5C9600CA /* Pods-AIDJTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIDJTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AIDJTests/Pods-AIDJTests.release.xcconfig"; sourceTree = "<group>"; };
+		63D0A6AF59F958C0494EF7D1 /* Pods-AIDJ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIDJ.release.xcconfig"; path = "Pods/Target Support Files/Pods-AIDJ/Pods-AIDJ.release.xcconfig"; sourceTree = "<group>"; };
+		88AE6933247D59C854DB8BBB /* Pods-AIDJTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIDJTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AIDJTests/Pods-AIDJTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9D11944F95501A69DF1EDD4D /* Pods-AIDJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIDJ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AIDJ/Pods-AIDJ.debug.xcconfig"; sourceTree = "<group>"; };
+		AB0DBBF51E642C1D0018BCCD /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
+		ABA095471E6013A3006D7C15 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		ABF7B37B1E5ED34E00C65557 /* AIDJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AIDJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF7B37E1E5ED34E00C65557 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABF7B3801E5ED34E00C65557 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABA095481E6013A3006D7C15 /* MediaPlayer.framework in Frameworks */,
+				33A2FE2A6F782036A4C7D960 /* Pods_AIDJ.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90069F1A377ADC6A677ACA5E /* Pods_AIDJTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +100,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE9C48DC7DA832C4D160E252 /* Pods_AIDJUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74D5CA0E266F87304DEB0ADF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9D11944F95501A69DF1EDD4D /* Pods-AIDJ.debug.xcconfig */,
+				63D0A6AF59F958C0494EF7D1 /* Pods-AIDJ.release.xcconfig */,
+				88AE6933247D59C854DB8BBB /* Pods-AIDJTests.debug.xcconfig */,
+				4BCB154513A0B92F5C9600CA /* Pods-AIDJTests.release.xcconfig */,
+				4956A2ADF45EC5984FDA7C2E /* Pods-AIDJUITests.debug.xcconfig */,
+				4095A221BA23812BD8C57B12 /* Pods-AIDJUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		ABA095461E6013A3006D7C15 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ABA095471E6013A3006D7C15 /* MediaPlayer.framework */,
+				00521378025F8DE158C86743 /* Pods_AIDJ.framework */,
+				48004D18E9558AE81F586FC5 /* Pods_AIDJTests.framework */,
+				0371EDA479F7CA40BE600362 /* Pods_AIDJUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ABF7B3721E5ED34E00C65557 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +138,8 @@
 				ABF7B3921E5ED34E00C65557 /* AIDJTests */,
 				ABF7B39D1E5ED34F00C65557 /* AIDJUITests */,
 				ABF7B37C1E5ED34E00C65557 /* Products */,
+				ABA095461E6013A3006D7C15 /* Frameworks */,
+				74D5CA0E266F87304DEB0ADF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +162,7 @@
 				ABF7B3851E5ED34E00C65557 /* Assets.xcassets */,
 				ABF7B3871E5ED34E00C65557 /* LaunchScreen.storyboard */,
 				ABF7B38A1E5ED34E00C65557 /* Info.plist */,
+				AB0DBBF51E642C1D0018BCCD /* SongCell.swift */,
 			);
 			path = AIDJ;
 			sourceTree = "<group>";
@@ -132,9 +192,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABF7B3A31E5ED34F00C65557 /* Build configuration list for PBXNativeTarget "AIDJ" */;
 			buildPhases = (
+				9510C085C8B83C5FBD6F7D9E /* [CP] Check Pods Manifest.lock */,
 				ABF7B3771E5ED34E00C65557 /* Sources */,
 				ABF7B3781E5ED34E00C65557 /* Frameworks */,
 				ABF7B3791E5ED34E00C65557 /* Resources */,
+				ABB922021E63D82C00A79A65 /* Embed Frameworks */,
+				09F7F7CA361AF25E6C579632 /* [CP] Embed Pods Frameworks */,
+				444B1013E888A7D1CA75ADF1 /* [CP] Copy Pods Resources */,
+				AB7B2B911E66A2910000329A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -149,9 +214,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABF7B3A61E5ED34F00C65557 /* Build configuration list for PBXNativeTarget "AIDJTests" */;
 			buildPhases = (
+				E46ED29B33D6C98B3D9A0857 /* [CP] Check Pods Manifest.lock */,
 				ABF7B38B1E5ED34E00C65557 /* Sources */,
 				ABF7B38C1E5ED34E00C65557 /* Frameworks */,
 				ABF7B38D1E5ED34E00C65557 /* Resources */,
+				7B6FEA54056F2F54B179F6AD /* [CP] Embed Pods Frameworks */,
+				DCCAE032ECE419299B62DAF7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +235,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABF7B3A91E5ED34F00C65557 /* Build configuration list for PBXNativeTarget "AIDJUITests" */;
 			buildPhases = (
+				C403BC999C2920EF76924766 /* [CP] Check Pods Manifest.lock */,
 				ABF7B3961E5ED34F00C65557 /* Sources */,
 				ABF7B3971E5ED34F00C65557 /* Frameworks */,
 				ABF7B3981E5ED34F00C65557 /* Resources */,
+				053F79247A130541A732C234 /* [CP] Embed Pods Frameworks */,
+				C3B73949B93CF00C33D6078B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -188,13 +259,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "another sensy";
 				TargetAttributes = {
 					ABF7B37A1E5ED34E00C65557 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 58USB462J9;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					ABF7B38E1E5ED34E00C65557 = {
 						CreatedOnToolsVersion = 8.0;
@@ -257,12 +333,164 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		053F79247A130541A732C234 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AIDJUITests/Pods-AIDJUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		09F7F7CA361AF25E6C579632 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AIDJ/Pods-AIDJ-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		444B1013E888A7D1CA75ADF1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AIDJ/Pods-AIDJ-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B6FEA54056F2F54B179F6AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AIDJTests/Pods-AIDJTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9510C085C8B83C5FBD6F7D9E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AB7B2B911E66A2910000329A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" == \"Release\" ]; then\ncp \"${PROJECT_DIR}/${PROJECT_NAME}/Configuration/GoogleService-Info-release.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\necho \"Production GoogleService-Info copied.\"\nelse\ncp \"${PROJECT_DIR}/${PROJECT_NAME}/Configuration/GoogleService-Info-debug.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\necho \"Development GoogleService-Info copied.\"\nfi\n";
+		};
+		C3B73949B93CF00C33D6078B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AIDJUITests/Pods-AIDJUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C403BC999C2920EF76924766 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DCCAE032ECE419299B62DAF7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AIDJTests/Pods-AIDJTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E46ED29B33D6C98B3D9A0857 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ABF7B3771E5ED34E00C65557 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				ABF7B3811E5ED34E00C65557 /* ViewController.swift in Sources */,
+				AB0DBBF61E642C1D0018BCCD /* SongCell.swift in Sources */,
 				ABF7B37F1E5ED34E00C65557 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +564,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -361,8 +590,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = $OTHER_LDFLAGS;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -385,6 +616,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -403,7 +635,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = $OTHER_LDFLAGS;
 				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -411,12 +645,14 @@
 		};
 		ABF7B3A41E5ED34F00C65557 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D11944F95501A69DF1EDD4D /* Pods-AIDJ.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 58USB462J9;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = AIDJ/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ai.sensy.AIDJ;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.sensy.aidj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -424,12 +660,14 @@
 		};
 		ABF7B3A51E5ED34F00C65557 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63D0A6AF59F958C0494EF7D1 /* Pods-AIDJ.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 58USB462J9;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = AIDJ/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ai.sensy.AIDJ;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.sensy.aidj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -437,6 +675,7 @@
 		};
 		ABF7B3A71E5ED34F00C65557 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88AE6933247D59C854DB8BBB /* Pods-AIDJTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -452,6 +691,7 @@
 		};
 		ABF7B3A81E5ED34F00C65557 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BCB154513A0B92F5C9600CA /* Pods-AIDJTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -467,6 +707,7 @@
 		};
 		ABF7B3AA1E5ED34F00C65557 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4956A2ADF45EC5984FDA7C2E /* Pods-AIDJUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 58USB462J9;
@@ -481,6 +722,7 @@
 		};
 		ABF7B3AB1E5ED34F00C65557 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4095A221BA23812BD8C57B12 /* Pods-AIDJUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 58USB462J9;
@@ -512,6 +754,7 @@
 				ABF7B3A51E5ED34F00C65557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ABF7B3A61E5ED34F00C65557 /* Build configuration list for PBXNativeTarget "AIDJTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +763,7 @@
 				ABF7B3A81E5ED34F00C65557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ABF7B3A91E5ED34F00C65557 /* Build configuration list for PBXNativeTarget "AIDJUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +772,7 @@
 				ABF7B3AB1E5ED34F00C65557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
