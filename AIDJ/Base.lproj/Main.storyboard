@@ -7,14 +7,13 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AIDJ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="AIDJ" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,31 +22,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FuD-eD-zc4">
-                                <rect key="frame" x="0.0" y="28" width="375" height="160.5"/>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooW-rE-y0h">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="weC-SM-XVL">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="8D9-f8-r1y">
+                                            <connections>
+                                                <action selector="nextButton:" destination="BYZ-38-t0r" id="wEn-5V-Bvd"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="leA-py-8pw" customClass="YTPlayerView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="211"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="FuD-eD-zc4" secondAttribute="height" multiplier="21:9" id="wnE-7a-BCP"/>
+                                    <constraint firstAttribute="width" secondItem="leA-py-8pw" secondAttribute="height" multiplier="16:9" id="oAs-0C-1Yv"/>
                                 </constraints>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rJn-nj-oxp">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem title="play" id="ySS-7w-Nem">
-                                        <connections>
-                                            <action selector="playButton:" destination="BYZ-38-t0r" id="zet-7g-7ds"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="next" id="8D9-f8-r1y">
-                                        <connections>
-                                            <action selector="nextButton:" destination="BYZ-38-t0r" id="wEn-5V-Bvd"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="q0Q-uD-4Ty">
-                                <rect key="frame" x="16" y="188.5" width="343" height="434.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="275" width="375" height="348"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dwO-tF-IEm">
                                     <size key="itemSize" width="343" height="49"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -56,7 +52,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="r5N-wj-91o" customClass="SongCell" customModule="AIDJ" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="49"/>
+                                        <rect key="frame" x="16" y="0.0" width="343" height="49"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="49"/>
@@ -66,11 +62,13 @@
                                                     <rect key="frame" x="28" y="14" width="307" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                         <connections>
                                             <outlet property="label" destination="Vq1-qC-9Tb" id="Hyo-vn-kK0"/>
                                         </connections>
@@ -81,28 +79,53 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="BxM-C5-BK3"/>
                                 </connections>
                             </collectionView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZE-R5-RFZ">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="qA3-cO-PSD"/>
+                                    <barButtonItem image="play" id="ySS-7w-Nem">
+                                        <connections>
+                                            <action selector="playButton:" destination="BYZ-38-t0r" id="zet-7g-7ds"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="bd9-wz-V2Q"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="rJn-nj-oxp" firstAttribute="top" secondItem="q0Q-uD-4Ty" secondAttribute="bottom" id="3Zv-XO-Ted"/>
-                            <constraint firstItem="rJn-nj-oxp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Gl7-H0-xiT"/>
-                            <constraint firstItem="FuD-eD-zc4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="JJC-5L-pgD"/>
-                            <constraint firstAttribute="trailing" secondItem="rJn-nj-oxp" secondAttribute="trailing" id="WaE-vD-d10"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="q0Q-uD-4Ty" secondAttribute="trailing" id="b9b-Ik-R99"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rJn-nj-oxp" secondAttribute="bottom" id="bcd-gm-61b"/>
-                            <constraint firstAttribute="trailing" secondItem="FuD-eD-zc4" secondAttribute="trailing" id="gIm-1V-ZUT"/>
-                            <constraint firstItem="FuD-eD-zc4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="h02-Ud-w3H"/>
-                            <constraint firstItem="q0Q-uD-4Ty" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qKj-H1-gGD"/>
-                            <constraint firstItem="q0Q-uD-4Ty" firstAttribute="top" secondItem="FuD-eD-zc4" secondAttribute="bottom" id="roP-cr-tNF"/>
+                            <constraint firstItem="lZE-R5-RFZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2t2-6a-ukF"/>
+                            <constraint firstItem="lZE-R5-RFZ" firstAttribute="top" secondItem="q0Q-uD-4Ty" secondAttribute="bottom" id="Ayb-F3-IAz"/>
+                            <constraint firstAttribute="trailing" secondItem="lZE-R5-RFZ" secondAttribute="trailing" id="EkK-SW-FJr"/>
+                            <constraint firstAttribute="trailing" secondItem="ooW-rE-y0h" secondAttribute="trailing" id="GFD-Rm-UEV"/>
+                            <constraint firstItem="ooW-rE-y0h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="NEn-HD-7AQ"/>
+                            <constraint firstAttribute="trailing" secondItem="q0Q-uD-4Ty" secondAttribute="trailing" id="b9b-Ik-R99"/>
+                            <constraint firstItem="q0Q-uD-4Ty" firstAttribute="top" secondItem="leA-py-8pw" secondAttribute="bottom" id="hBt-Sh-Z4P"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lZE-R5-RFZ" secondAttribute="bottom" id="leo-J4-FfF"/>
+                            <constraint firstItem="ooW-rE-y0h" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" symbolic="YES" id="mVj-z7-Oe5"/>
+                            <constraint firstItem="q0Q-uD-4Ty" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qKj-H1-gGD"/>
+                            <constraint firstItem="leA-py-8pw" firstAttribute="top" secondItem="ooW-rE-y0h" secondAttribute="bottom" id="t9V-5o-3Pd"/>
+                            <constraint firstAttribute="trailing" secondItem="leA-py-8pw" secondAttribute="trailing" id="uuP-oo-wvz"/>
+                            <constraint firstItem="leA-py-8pw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="w4X-L8-S4s"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="03C-uX-NXr"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
-                        <outlet property="videoContainerView" destination="FuD-eD-zc4" id="3gP-fJ-rAf"/>
+                        <outlet property="collectionView" destination="q0Q-uD-4Ty" id="PPZ-d6-Ffq"/>
+                        <outlet property="navBar" destination="ooW-rE-y0h" id="Fn4-E2-oI2"/>
+                        <outlet property="navItem" destination="weC-SM-XVL" id="IKv-ip-DGx"/>
+                        <outlet property="playButton" destination="ySS-7w-Nem" id="8Ll-P1-zmB"/>
+                        <outlet property="youtubeView" destination="leA-py-8pw" id="Dki-Me-eIf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="91.304347826086968"/>
+            <point key="canvasLocation" x="972" y="91.304347826086968"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="play" width="25" height="25"/>
+    </resources>
 </document>

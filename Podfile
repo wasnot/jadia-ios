@@ -6,8 +6,10 @@ target 'AIDJ' do
   use_frameworks!
 
   # Pods for AIDJ
-  pod "XCDYouTubeKit", "~> 2.5"
-  
+#  pod "XCDYouTubeKit", "~> 2.5"
+  pod "youtube-ios-player-helper", "~> 0.1.4"
+  pod 'R.swift'
+
   # Firebase
   pod 'Firebase'
   pod 'Firebase/Database'

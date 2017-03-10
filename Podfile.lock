@@ -19,12 +19,16 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
-  - XCDYouTubeKit (2.5.4)
+  - R.swift (3.2.0):
+    - R.swift.Library (~> 3.0.2)
+  - R.swift.Library (3.0.2)
+  - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
   - Firebase
   - Firebase/Database
-  - XCDYouTubeKit (~> 2.5)
+  - R.swift
+  - youtube-ios-player-helper (~> 0.1.4)
 
 SPEC CHECKSUMS:
   Firebase: 85a581fb04e44f63ae9f4fbc8d6dabf4a4c18653
@@ -33,8 +37,10 @@ SPEC CHECKSUMS:
   FirebaseDatabase: 05c96d7b43a7368dc91c07791adb49683e1738d1
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-  XCDYouTubeKit: 80eb3978dae220a0116d198bca6852c6c969fa66
+  R.swift: 207a372a2b5977caef440c696a368009460641d1
+  R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 11029582f70671d0514ff55cbbf69477c2d33087
+PODFILE CHECKSUM: 82e0a00527ebfd5be5b2770d4e5cb9f7db5a67d6
 
 COCOAPODS: 1.2.0

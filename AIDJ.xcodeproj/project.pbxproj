@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		33A2FE2A6F782036A4C7D960 /* Pods_AIDJ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00521378025F8DE158C86743 /* Pods_AIDJ.framework */; };
 		90069F1A377ADC6A677ACA5E /* Pods_AIDJTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48004D18E9558AE81F586FC5 /* Pods_AIDJTests.framework */; };
+		AB098BC91E70066A00A6CABF /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB098BC81E70066A00A6CABF /* R.generated.swift */; };
+		AB098BCB1E70097900A6CABF /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB098BCA1E70097900A6CABF /* NavigationBar.swift */; };
 		AB0DBBF61E642C1D0018BCCD /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0DBBF51E642C1D0018BCCD /* SongCell.swift */; };
 		ABA095481E6013A3006D7C15 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABA095471E6013A3006D7C15 /* MediaPlayer.framework */; };
 		ABF7B37F1E5ED34E00C65557 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF7B37E1E5ED34E00C65557 /* AppDelegate.swift */; };
@@ -61,6 +63,8 @@
 		63D0A6AF59F958C0494EF7D1 /* Pods-AIDJ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIDJ.release.xcconfig"; path = "Pods/Target Support Files/Pods-AIDJ/Pods-AIDJ.release.xcconfig"; sourceTree = "<group>"; };
 		88AE6933247D59C854DB8BBB /* Pods-AIDJTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIDJTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AIDJTests/Pods-AIDJTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9D11944F95501A69DF1EDD4D /* Pods-AIDJ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIDJ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AIDJ/Pods-AIDJ.debug.xcconfig"; sourceTree = "<group>"; };
+		AB098BC81E70066A00A6CABF /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		AB098BCA1E70097900A6CABF /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		AB0DBBF51E642C1D0018BCCD /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		ABA095471E6013A3006D7C15 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		ABF7B37B1E5ED34E00C65557 /* AIDJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AIDJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +138,7 @@
 		ABF7B3721E5ED34E00C65557 = {
 			isa = PBXGroup;
 			children = (
+				AB098BC81E70066A00A6CABF /* R.generated.swift */,
 				ABF7B37D1E5ED34E00C65557 /* AIDJ */,
 				ABF7B3921E5ED34E00C65557 /* AIDJTests */,
 				ABF7B39D1E5ED34F00C65557 /* AIDJUITests */,
@@ -163,6 +168,7 @@
 				ABF7B3871E5ED34E00C65557 /* LaunchScreen.storyboard */,
 				ABF7B38A1E5ED34E00C65557 /* Info.plist */,
 				AB0DBBF51E642C1D0018BCCD /* SongCell.swift */,
+				AB098BCA1E70097900A6CABF /* NavigationBar.swift */,
 			);
 			path = AIDJ;
 			sourceTree = "<group>";
@@ -193,13 +199,14 @@
 			buildConfigurationList = ABF7B3A31E5ED34F00C65557 /* Build configuration list for PBXNativeTarget "AIDJ" */;
 			buildPhases = (
 				9510C085C8B83C5FBD6F7D9E /* [CP] Check Pods Manifest.lock */,
+				AB098BC71E70053D00A6CABF /* Run Script: R.swift */,
 				ABF7B3771E5ED34E00C65557 /* Sources */,
 				ABF7B3781E5ED34E00C65557 /* Frameworks */,
 				ABF7B3791E5ED34E00C65557 /* Resources */,
 				ABB922021E63D82C00A79A65 /* Embed Frameworks */,
 				09F7F7CA361AF25E6C579632 /* [CP] Embed Pods Frameworks */,
 				444B1013E888A7D1CA75ADF1 /* [CP] Copy Pods Resources */,
-				AB7B2B911E66A2910000329A /* ShellScript */,
+				AB7B2B911E66A2910000329A /* Run Script: GoogleService-Info.plist cp */,
 			);
 			buildRules = (
 			);
@@ -409,13 +416,28 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		AB7B2B911E66A2910000329A /* ShellScript */ = {
+		AB098BC71E70053D00A6CABF /* Run Script: R.swift */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script: R.swift";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+		};
+		AB7B2B911E66A2910000329A /* Run Script: GoogleService-Info.plist cp */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script: GoogleService-Info.plist cp";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,9 +511,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB098BCB1E70097900A6CABF /* NavigationBar.swift in Sources */,
 				ABF7B3811E5ED34E00C65557 /* ViewController.swift in Sources */,
 				AB0DBBF61E642C1D0018BCCD /* SongCell.swift in Sources */,
 				ABF7B37F1E5ED34E00C65557 /* AppDelegate.swift in Sources */,
+				AB098BC91E70066A00A6CABF /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
