@@ -55,7 +55,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         UIApplication.shared.beginReceivingRemoteControlEvents()
         navBar.delegate = self
         navItem.titleView = UIImageView(image: R.image.header())
-        playButton.image?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        youtubeView.delegate = self
         
         databaseRef = FIRDatabase.database().reference()
         databaseRef.child("songs").queryOrderedByKey().observe(FIRDataEventType.value, with: { (snapshot) -> Void in
@@ -86,7 +86,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 self.selectSong(row: index)
             }
         })
-        youtubeView.delegate = self
         
         let defaultCenter = NotificationCenter.default
         
@@ -139,10 +138,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         //選択時の背景
         let selectedBGView = UIView(frame: songCell.bounds)
-//        selectedBGView.backgroundColor = UIColor.red
-        selectedBGView.layer.borderColor = UIColor.cyan.cgColor
-        selectedBGView.layer.borderWidth = 2.0
+        selectedBGView.backgroundColor = UIColor.Jadia.coolCyan
         songCell.selectedBackgroundView = selectedBGView
+        
+        songCell.backgroundColor = indexPath.row % 2 != 0 ? UIColor.Jadia.gray : UIColor.black
         
         return songCell
     }
@@ -163,6 +162,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         NSLog("didSelectItem \(cell.isSelected)")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width, height: 50)
     }
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {
@@ -224,4 +227,3 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         NSLog("applicationWillEnterForeground")
     }
 }
-

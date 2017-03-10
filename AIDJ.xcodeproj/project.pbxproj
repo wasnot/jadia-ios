@@ -20,6 +20,7 @@
 		ABF7B3891E5ED34E00C65557 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABF7B3871E5ED34E00C65557 /* LaunchScreen.storyboard */; };
 		ABF7B3941E5ED34F00C65557 /* AIDJTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF7B3931E5ED34F00C65557 /* AIDJTests.swift */; };
 		ABF7B39F1E5ED34F00C65557 /* AIDJUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF7B39E1E5ED34F00C65557 /* AIDJUITests.swift */; };
+		ABF99ECF1E72AB7000DD270E /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF99ECE1E72AB7000DD270E /* UIColor+extensions.swift */; };
 		DE9C48DC7DA832C4D160E252 /* Pods_AIDJUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0371EDA479F7CA40BE600362 /* Pods_AIDJUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		ABF7B39A1E5ED34F00C65557 /* AIDJUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AIDJUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF7B39E1E5ED34F00C65557 /* AIDJUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIDJUITests.swift; sourceTree = "<group>"; };
 		ABF7B3A01E5ED34F00C65557 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABF99ECE1E72AB7000DD270E /* UIColor+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				ABF7B38A1E5ED34E00C65557 /* Info.plist */,
 				AB0DBBF51E642C1D0018BCCD /* SongCell.swift */,
 				AB098BCA1E70097900A6CABF /* NavigationBar.swift */,
+				ABF99ECE1E72AB7000DD270E /* UIColor+extensions.swift */,
 			);
 			path = AIDJ;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				AB0DBBF61E642C1D0018BCCD /* SongCell.swift in Sources */,
 				ABF7B37F1E5ED34E00C65557 /* AppDelegate.swift in Sources */,
 				AB098BC91E70066A00A6CABF /* R.generated.swift in Sources */,
+				ABF99ECF1E72AB7000DD270E /* UIColor+extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
