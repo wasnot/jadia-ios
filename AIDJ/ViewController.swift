@@ -19,13 +19,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var youtubeView: YTPlayerView!
     @IBOutlet weak var playButton: UIBarButtonItem!
     
+    var roomId = "-KfA-r98MwqHaEMwOQVO"
     var songs: [String: [String: AnyObject]] = [:]
     var songsKey: [String] = []
-    var databaseRef:FIRDatabaseReference!
+    var databaseRef: FIRDatabaseReference!
+    var databaseHandles: [UInt]?
     var songIndex = -1 {
         didSet {
             NSLog("did Set \(songIndex), \(databaseRef)")
-            databaseRef.child("playing").updateChildValues(["index": songIndex])
+            databaseRef.child("rooms/\(roomId)").updateChildValues(["playing": songIndex])
         }
     }
     var isHardPlay = false
@@ -56,36 +58,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         navBar.delegate = self
         navItem.titleView = UIImageView(image: R.image.header())
         youtubeView.delegate = self
-        
         databaseRef = FIRDatabase.database().reference()
-        databaseRef.child("songs").queryOrderedByKey().observe(FIRDataEventType.value, with: { (snapshot) -> Void in
-            if snapshot.value is NSNull {
-                return
-            }
-            guard let values: Any = snapshot.value else {
-                return
-            }
-            NSLog("songs: \(values)")
-            self.songs = values as! [String : [String: AnyObject]]
-            self.songsKey = Array(self.songs.keys).sorted(by: {$0 < $1})
-            NSLog("songs: \(self.songs)")
-            // listの更新
-            self.collectionView.reloadData()
-            self.collectionView.layoutIfNeeded()
-        })
-        databaseRef.child("playing").observe(FIRDataEventType.value, with: { (snapshot) -> Void in
-            var index: Int = 0
-            if snapshot.value is NSNull {
-                index = 0
-            } else if let values = snapshot.value {
-                let playing = values as! [String : AnyObject]
-                NSLog("playing \(playing)")
-                index = playing["index"] as! Int
-            }
-            if self.songIndex != index && index < self.songs.count {
-                self.selectSong(row: index)
-            }
-        })
+        registerDatabase()
         
         let defaultCenter = NotificationCenter.default
         
@@ -100,6 +74,48 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func registerDatabase() {
+        let songHandle = databaseRef.child("songs/\(roomId)").queryOrderedByKey().observe(FIRDataEventType.value, with: { (snapshot) -> Void in
+            if snapshot.value is NSNull {
+                return
+            }
+            guard let values: Any = snapshot.value else {
+                return
+            }
+            NSLog("songs: \(values)")
+            self.songs = values as! [String : [String: AnyObject]]
+            self.songsKey = Array(self.songs.keys).sorted(by: {$0 < $1})
+            NSLog("songs: \(self.songs)")
+            // listの更新
+            self.collectionView.reloadData()
+            self.collectionView.layoutIfNeeded()
+        })
+        let roomHandle = databaseRef.child("rooms/\(roomId)").observe(FIRDataEventType.value, with: { (snapshot) -> Void in
+            var index: Int = 0
+            if snapshot.value is NSNull {
+                index = 0
+            } else if let values = snapshot.value {
+                let room = values as! [String : AnyObject]
+                NSLog("room \(room)")
+                index = room["playing"] as! Int
+            }
+            if self.songIndex != index && index < self.songs.count {
+                self.selectSong(row: index)
+            }
+        })
+        databaseHandles = [songHandle, roomHandle]
+    }
+    
+    func unregisterDatabase(){
+        guard databaseHandles == nil else {
+            return
+        }
+        for handle in databaseHandles! {
+            databaseRef.removeObserver(withHandle: handle)
+        }
+        databaseHandles = nil
+    }
 
     @IBAction func playButton(_ sender: Any) {
         if youtubeView.playerState() == YTPlayerState.playing {
@@ -112,7 +128,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     @IBAction func nextButton(_ sender: Any) {
-        nextSong()
+        
+        let alert = UIAlertController(title: "Room Id", message: "Input text", preferredStyle: .alert)
+        let saveAction = UIAlertAction(title: "Done", style: .default) { (action:UIAlertAction!) -> Void in
+            
+            let textField = alert.textFields![0] as UITextField
+            self.roomId = textField.text!
+            self.unregisterDatabase()
+            self.registerDatabase()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        
+        // UIAlertControllerにtextFieldを追加
+        alert.addTextField(configurationHandler: {(textField: UITextField) -> Void in
+            textField.text = self.roomId
+        })
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
     
     func nextSong(){
