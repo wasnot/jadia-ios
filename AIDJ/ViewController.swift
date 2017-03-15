@@ -19,7 +19,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var youtubeView: YTPlayerView!
     @IBOutlet weak var playButton: UIBarButtonItem!
     
-    var roomId = "-KfA-r98MwqHaEMwOQVO"
+    var settings: [String: Any] = ["roomId": "-KfA-r98MwqHaEMwOQVO"]
     var songs: [String: [String: AnyObject]] = [:]
     var songsKey: [String] = []
     var databaseRef: FIRDatabaseReference!
@@ -27,7 +27,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var songIndex = -1 {
         didSet {
             NSLog("did Set \(songIndex), \(databaseRef)")
-            databaseRef.child("rooms/\(roomId)").updateChildValues(["playing": songIndex])
+            databaseRef.child("rooms/\(settings["roomId"]!)").updateChildValues(["playing": songIndex])
         }
     }
     var isHardPlay = false
@@ -58,6 +58,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         navBar.delegate = self
         navItem.titleView = UIImageView(image: R.image.header())
         youtubeView.delegate = self
+        
+        let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("settings")
+        if FileManager().fileExists(atPath: path) {
+            settings = NSDictionary(contentsOfFile: path) as! [String: Any]
+        } else {
+            _ = (self.settings as NSDictionary).write(toFile: path, atomically: true)
+        }
+        NSLog("path \(path)")
+        NSLog("settings \(settings)")
+        
         databaseRef = FIRDatabase.database().reference()
         registerDatabase()
         
@@ -76,7 +86,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func registerDatabase() {
-        let songHandle = databaseRef.child("songs/\(roomId)").queryOrderedByKey().observe(FIRDataEventType.value, with: { (snapshot) -> Void in
+        NSLog("registerDatabase songs/\(settings["roomId"]!)")
+        let songHandle = databaseRef.child("songs/\(settings["roomId"]!)").queryOrderedByKey().observe(FIRDataEventType.value, with: { (snapshot) -> Void in
             if snapshot.value is NSNull {
                 return
             }
@@ -91,7 +102,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             self.collectionView.reloadData()
             self.collectionView.layoutIfNeeded()
         })
-        let roomHandle = databaseRef.child("rooms/\(roomId)").observe(FIRDataEventType.value, with: { (snapshot) -> Void in
+        let roomHandle = databaseRef.child("rooms/\(settings["roomId"]!)").observe(FIRDataEventType.value, with: { (snapshot) -> Void in
             var index: Int = 0
             if snapshot.value is NSNull {
                 index = 0
@@ -133,7 +144,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let saveAction = UIAlertAction(title: "Done", style: .default) { (action:UIAlertAction!) -> Void in
             
             let textField = alert.textFields![0] as UITextField
-            self.roomId = textField.text!
+            
+            self.settings["roomId"] = textField.text!
+            let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("settings")
+            _ = (self.settings as NSDictionary).write(toFile: path, atomically: true)
+            
             self.unregisterDatabase()
             self.registerDatabase()
         }
@@ -142,7 +157,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         // UIAlertControllerにtextFieldを追加
         alert.addTextField(configurationHandler: {(textField: UITextField) -> Void in
-            textField.text = self.roomId
+            textField.text = self.settings["roomId"] as? String
         })
         
         alert.addAction(saveAction)
