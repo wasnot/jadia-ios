@@ -19,7 +19,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var youtubeView: YTPlayerView!
     @IBOutlet weak var playButton: UIBarButtonItem!
     
-    var settings: [String: Any] = ["roomId": "-KfA-r98MwqHaEMwOQVO"]
+    var settings: [String: Any] = ["roomId": "-KfA3ThcnZwJhcX0OIzA"]
     var songs: [String: [String: AnyObject]] = [:]
     var songsKey: [String] = []
     var databaseRef: FIRDatabaseReference!
