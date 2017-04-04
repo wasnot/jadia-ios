@@ -161,8 +161,8 @@ class ViewController: UIViewController {
     
     func test1(notification: NSNotification) {
         NSLog("test1: \(notification)")
-        let playItem: AVPlayerItem? = notification.object as! AVPlayerItem
-        playItem.m
+        let _: AVPlayerItem? = notification.object as! AVPlayerItem
+        
     }
     
     func test2(notification: NSNotification) {
