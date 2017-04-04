@@ -7,11 +7,13 @@
 //
 
 import UIKit
-import NotificationCenter
 import youtube_ios_player_helper
 import Firebase
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UINavigationBarDelegate, YTPlayerViewDelegate {
+import AVFoundation
+import MediaPlayer
+
+class ViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var navItem: UINavigationItem!
@@ -30,26 +32,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             databaseRef.child("rooms/\(settings["roomId"]!)").updateChildValues(["playing": songIndex])
         }
     }
-    var isHardPlay = false
-    var isPlaying = false {
-        didSet {
-            if isPlaying {
-                playButton.image = R.image.pause()
-            } else {
-                playButton.image = R.image.play()
-            }
-        }
-    }
-    
-    let playerParam = [
-        "playsinline": 1,
-        "showinfo": 0,
-        "autoplay": 1,
-        "rel": 0,
-        "controls": 1,
-        "origin": "https://www.example.com",
-        "modestbranding": 1
-    ] as [String : Any]
+    var playerManager: YoutubePlayerManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +40,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         UIApplication.shared.beginReceivingRemoteControlEvents()
         navBar.delegate = self
         navItem.titleView = UIImageView(image: R.image.header())
-        youtubeView.delegate = self
+        playerManager = YoutubePlayerManager(playerView: youtubeView)
+        playerManager?.delegate = self
         
         let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("settings")
         if FileManager().fileExists(atPath: path) {
@@ -71,13 +55,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         databaseRef = FIRDatabase.database().reference()
         registerDatabase()
         
+        
+        
         let defaultCenter = NotificationCenter.default
-        
-        defaultCenter.addObserver(self, selector: #selector(applicationDidEnterBackground(application:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
-        defaultCenter.addObserver(self, selector: #selector(applicationWillEnterForeground(application:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        defaultCenter.addObserver(self, selector: #selector(applicationWillResignActive(application:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-        
-        isHardPlay = false; // 強制再生はまだ不必要なので
+        defaultCenter.addObserver(self, selector: #selector(test1(notification:)), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(test2(notification:)), name: Notification.Name.AVPlayerItemPlaybackStalled, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(test3(notification:)), name: Notification.Name.MPMoviePlayerLoadStateDidChange, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(test4(notification:)), name: Notification.Name.MPMoviePlayerDidExitFullscreen, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(test4(notification:)), name: Notification.Name.MPMusicPlayerControllerVolumeDidChange, object: nil)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -129,16 +115,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
 
     @IBAction func playButton(_ sender: Any) {
-        if youtubeView.playerState() == YTPlayerState.playing {
-            youtubeView.pauseVideo()
-            isPlaying = false
-        } else {
-            youtubeView.playVideo()
-            isPlaying = true
-        }
+        playerManager?.playSong()
     }
     
     @IBAction func nextButton(_ sender: Any) {
+        let isOtherAudioPlaying = AVAudioSession.sharedInstance().isOtherAudioPlaying
+        NSLog("playing \(isOtherAudioPlaying)")
         
         let alert = UIAlertController(title: "Room Id", message: "Input text", preferredStyle: .alert)
         let saveAction = UIAlertAction(title: "Done", style: .default) { (action:UIAlertAction!) -> Void in
@@ -177,9 +159,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView(collectionView, didSelectItemAt: index)
     }
     
-    func setVideo(identifier: String){
-        youtubeView.load(withVideoId: identifier, playerVars: playerParam)
+    func test1(notification: NSNotification) {
+        NSLog("test1: \(notification)")
+        let playItem: AVPlayerItem? = notification.object as! AVPlayerItem
+        playItem.m
     }
+    
+    func test2(notification: NSNotification) {
+        NSLog("test2: \(notification)")
+    }
+    
+    func test3(notification: NSNotification) {
+        NSLog("test3: \(notification)")
+    }
+    
+    func test4(notification: NSNotification) {
+        NSLog("test4: \(notification)")
+    }
+}
+
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UINavigationBarDelegate{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let songCell: SongCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! SongCell
@@ -208,7 +207,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         songIndex = indexPath.row
         let song = songs[songsKey[indexPath.row]]
-        setVideo(identifier: song?["id"] as! String)
+        playerManager?.setVideo(identifier: song?["id"] as! String)
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         NSLog("didSelectItem \(cell.isSelected)")
@@ -221,59 +220,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return UIBarPosition.topAttached
     }
-    
-    func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
-        
-        switch (state) {
-        case YTPlayerState.paused:
-            NSLog("didChangeTo paused")
-            if isHardPlay { // 一時停止ボタンが効かなくなるので判定する
-                playerView.playVideo()
-                isHardPlay = false
-            }
-        case YTPlayerState.buffering:
-            NSLog("didChangeTo buffering")
-        case YTPlayerState.ended:
-            NSLog("didChangeTo ended")
-            if isPlaying {
-                nextSong()
-            }
-        case YTPlayerState.playing:
-            NSLog("didChangeTo playing")
-            isPlaying = true
-        case YTPlayerState.queued:
-            NSLog("didChangeTo queued")
-        case YTPlayerState.unknown:
-            NSLog("didChangeTo unknown")
-        case YTPlayerState.unstarted:
-            NSLog("didChangeTo unstarted")
+}
+
+extension ViewController: YoutubePlayerManageDelegate {
+    func playStateChange(playing: Bool) {
+        if playing {
+            playButton.image = R.image.pause()
+        } else {
+            playButton.image = R.image.play()
         }
     }
-    
-    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
-        NSLog("playerViewDidBecomeReady")
-        if isPlaying {
-            playerView.playVideo()
-        }
-    }
-    
-    // バックグラウンド移行直前に実行(didChangeToStateより先に動きます)
-    func applicationWillResignActive(application: UIApplication) -> Void {
-        NSLog("applicationWillResignActive")
-        isHardPlay = true; // didChangeToStateで再生してもらう為にフラグ書き換え
-    }
-    
-    // バックグラウンド移行後に実行(didChangeToStateより後に動きます)
-    func applicationDidEnterBackground(application: UIApplication) -> Void {
-        NSLog("applicationDidEnterBackground")
-        // バックグラウンド再生したい気持ちを伝えます
-        if isPlaying {
-            youtubeView.playVideo()
-        }
-    }
-    
-    // フォアグラウンドに戻ってきた際に実行
-    func applicationWillEnterForeground(application: UIApplication) -> Void {
-        NSLog("applicationWillEnterForeground")
+    func playEnded() {
+        nextSong()
     }
 }
