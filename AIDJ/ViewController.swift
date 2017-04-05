@@ -11,7 +11,6 @@ import youtube_ios_player_helper
 import Firebase
 
 import AVFoundation
-import MediaPlayer
 
 class ViewController: UIViewController {
     
@@ -58,11 +57,8 @@ class ViewController: UIViewController {
         
         
         let defaultCenter = NotificationCenter.default
-        defaultCenter.addObserver(self, selector: #selector(test1(notification:)), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
-        defaultCenter.addObserver(self, selector: #selector(test2(notification:)), name: Notification.Name.AVPlayerItemPlaybackStalled, object: nil)
-        defaultCenter.addObserver(self, selector: #selector(test3(notification:)), name: Notification.Name.MPMoviePlayerLoadStateDidChange, object: nil)
-        defaultCenter.addObserver(self, selector: #selector(test4(notification:)), name: Notification.Name.MPMoviePlayerDidExitFullscreen, object: nil)
-        defaultCenter.addObserver(self, selector: #selector(test4(notification:)), name: Notification.Name.MPMusicPlayerControllerVolumeDidChange, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(itemDidPlayToEndTime(notification:)), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(itemBecameCurrentNotification(notification:)), name: Notification.Name.init(rawValue: "AVPlayerItemBecameCurrentNotification"), object: nil)
 
     }
 
@@ -119,8 +115,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func nextButton(_ sender: Any) {
-        let isOtherAudioPlaying = AVAudioSession.sharedInstance().isOtherAudioPlaying
-        NSLog("playing \(isOtherAudioPlaying)")
         
         let alert = UIAlertController(title: "Room Id", message: "Input text", preferredStyle: .alert)
         let saveAction = UIAlertAction(title: "Done", style: .default) { (action:UIAlertAction!) -> Void in
@@ -159,22 +153,17 @@ class ViewController: UIViewController {
         collectionView(collectionView, didSelectItemAt: index)
     }
     
-    func test1(notification: NSNotification) {
-        NSLog("test1: \(notification)")
-        let _: AVPlayerItem? = notification.object as! AVPlayerItem
+    func itemDidPlayToEndTime(notification: NSNotification) {
+        NSLog("itemDidPlayToEndTime: \(notification)")
+        let playerItem: AVPlayerItem? = notification.object as? AVPlayerItem
+        let _: AVPlayer? = playerItem?.value(forKey: "player") as? AVPlayer
+    }
+    
+    func itemBecameCurrentNotification(notification: NSNotification) {
+        NSLog("itemBecameCurrentNotification: \(notification)")
+        let playerItem: AVPlayerItem? = notification.object as? AVPlayerItem
         
-    }
-    
-    func test2(notification: NSNotification) {
-        NSLog("test2: \(notification)")
-    }
-    
-    func test3(notification: NSNotification) {
-        NSLog("test3: \(notification)")
-    }
-    
-    func test4(notification: NSNotification) {
-        NSLog("test4: \(notification)")
+        AudioTap.setAudioTap(playerItem: playerItem!)
     }
 }
 

@@ -13,6 +13,7 @@
 		AB098BCB1E70097900A6CABF /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB098BCA1E70097900A6CABF /* NavigationBar.swift */; };
 		AB0DBBF61E642C1D0018BCCD /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0DBBF51E642C1D0018BCCD /* SongCell.swift */; };
 		AB3F0FB91E8A3DFA00C75DD6 /* YoutubePlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3F0FB81E8A3DFA00C75DD6 /* YoutubePlayerManager.swift */; };
+		AB65C9AA1E950B6000D8001D /* AudioTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB65C9A91E950B6000D8001D /* AudioTap.swift */; };
 		ABA095481E6013A3006D7C15 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABA095471E6013A3006D7C15 /* MediaPlayer.framework */; };
 		ABF7B37F1E5ED34E00C65557 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF7B37E1E5ED34E00C65557 /* AppDelegate.swift */; };
 		ABF7B3811E5ED34E00C65557 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF7B3801E5ED34E00C65557 /* ViewController.swift */; };
@@ -69,6 +70,7 @@
 		AB098BCA1E70097900A6CABF /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		AB0DBBF51E642C1D0018BCCD /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		AB3F0FB81E8A3DFA00C75DD6 /* YoutubePlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubePlayerManager.swift; sourceTree = "<group>"; };
+		AB65C9A91E950B6000D8001D /* AudioTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTap.swift; sourceTree = "<group>"; };
 		ABA095471E6013A3006D7C15 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		ABF7B37B1E5ED34E00C65557 /* AIDJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AIDJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF7B37E1E5ED34E00C65557 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				AB098BCA1E70097900A6CABF /* NavigationBar.swift */,
 				AB3F0FB81E8A3DFA00C75DD6 /* YoutubePlayerManager.swift */,
 				ABF99ECE1E72AB7000DD270E /* UIColor+extensions.swift */,
+				AB65C9A91E950B6000D8001D /* AudioTap.swift */,
 			);
 			path = AIDJ;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB65C9AA1E950B6000D8001D /* AudioTap.swift in Sources */,
 				AB098BCB1E70097900A6CABF /* NavigationBar.swift in Sources */,
 				ABF7B3811E5ED34E00C65557 /* ViewController.swift in Sources */,
 				AB0DBBF61E642C1D0018BCCD /* SongCell.swift in Sources */,
