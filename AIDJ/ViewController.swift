@@ -48,17 +48,15 @@ class ViewController: UIViewController {
         } else {
             _ = (self.settings as NSDictionary).write(toFile: path, atomically: true)
         }
-        NSLog("path \(path)")
+//        NSLog("path \(path)")
         NSLog("settings \(settings)")
         
         databaseRef = FIRDatabase.database().reference()
         registerDatabase()
         
-        
-        
         let defaultCenter = NotificationCenter.default
-        defaultCenter.addObserver(self, selector: #selector(itemDidPlayToEndTime(notification:)), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
-        defaultCenter.addObserver(self, selector: #selector(itemBecameCurrentNotification(notification:)), name: Notification.Name.init(rawValue: "AVPlayerItemBecameCurrentNotification"), object: nil)
+        defaultCenter.addObserver(self, selector: #selector(itemDidPlayToEndTime(notification:)), name: .AVPlayerItemDidPlayToEndTime, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(itemBecameCurrentNotification(notification:)), name: Notification.Name(rawValue: "AVPlayerItemBecameCurrentNotification"), object: nil)
 
     }
 
@@ -76,13 +74,14 @@ class ViewController: UIViewController {
             guard let values: Any = snapshot.value else {
                 return
             }
-            NSLog("songs: \(values)")
+//            NSLog("songs: \(values)")
             self.songs = values as! [String : [String: AnyObject]]
             self.songsKey = Array(self.songs.keys).sorted(by: {$0 < $1})
-            NSLog("songs: \(self.songs)")
+//            NSLog("songs: \(self.songs)")
             // listの更新
             self.collectionView.reloadData()
             self.collectionView.layoutIfNeeded()
+            self.setSong(index: self.songIndex)
         })
         let roomHandle = databaseRef.child("rooms/\(settings["roomId"]!)").observe(FIRDataEventType.value, with: { (snapshot) -> Void in
             var index: Int = 0
@@ -90,12 +89,10 @@ class ViewController: UIViewController {
                 index = 0
             } else if let values = snapshot.value {
                 let room = values as! [String : AnyObject]
-                NSLog("room \(room)")
+//                NSLog("room \(room)")
                 index = room["playing"] as! Int
             }
-            if self.songIndex != index && index < self.songs.count {
-                self.selectSong(row: index)
-            }
+            self.setSong(index: index)
         })
         databaseHandles = [songHandle, roomHandle]
     }
@@ -116,29 +113,51 @@ class ViewController: UIViewController {
     
     @IBAction func nextButton(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Room Id", message: "Input text", preferredStyle: .alert)
-        let saveAction = UIAlertAction(title: "Done", style: .default) { (action:UIAlertAction!) -> Void in
-            
-            let textField = alert.textFields![0] as UITextField
-            
-            self.settings["roomId"] = textField.text!
+        databaseRef.child("rooms").observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.value is NSNull {
+                return
+            }
+            guard let values: Any = snapshot.value else {
+                return
+            }
+            NSLog("rooms: \(values)")
+            let rooms = values as! [String : [String: AnyObject]]
+            NSLog("rooms: \(rooms.count, rooms)")
+            self.showRoomSelect(rooms: rooms)
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    func showRoomSelect(rooms: [String : [String: AnyObject]]) {
+        let currentRoom = rooms[settings["roomId"] as! String]?["name"] as? String ?? "unknown"
+        let alert = UIAlertController(title: "Room Id", message: "current \n \(currentRoom)", preferredStyle: .actionSheet)
+        let roomKeys = Array(rooms.keys).sorted(by: {$0 < $1})
+        
+        let closure = { (action: UIAlertAction!) -> Void in
+            guard let index = alert.actions.index(of: action) else {
+                return
+            }
+            NSLog("Index: \(index, roomKeys[index])")
+            self.settings["roomId"] = roomKeys[index]
             let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("settings")
             _ = (self.settings as NSDictionary).write(toFile: path, atomically: true)
-            
+
             self.unregisterDatabase()
             self.registerDatabase()
         }
+        for key in roomKeys {
+            alert.addAction(UIAlertAction(title: rooms[key]?["name"] as? String, style: .default, handler: closure))
+        }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        
-        // UIAlertControllerにtextFieldを追加
-        alert.addTextField(configurationHandler: {(textField: UITextField) -> Void in
-            textField.text = self.settings["roomId"] as? String
-        })
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+    
+    func setSong(index: Int) {
+        if self.songIndex != index && index < self.songs.count {
+            self.selectSong(row: index)
+        }
     }
     
     func nextSong(){

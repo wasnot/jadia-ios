@@ -40,9 +40,9 @@ class YoutubePlayerManager: NSObject, YTPlayerViewDelegate {
         
         let defaultCenter = NotificationCenter.default
         
-        defaultCenter.addObserver(self, selector: #selector(applicationDidEnterBackground(application:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
-        defaultCenter.addObserver(self, selector: #selector(applicationWillEnterForeground(application:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        defaultCenter.addObserver(self, selector: #selector(applicationWillResignActive(application:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(applicationDidEnterBackground(application:)), name: .UIApplicationDidEnterBackground, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(applicationWillEnterForeground(application:)), name: .UIApplicationWillEnterForeground, object: nil)
+        defaultCenter.addObserver(self, selector: #selector(applicationWillResignActive(application:)), name: .UIApplicationWillResignActive, object: nil)
         
         isHardPlay = false; // 強制再生はまだ不必要なので
     }
