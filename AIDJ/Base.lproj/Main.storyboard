@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,11 +36,10 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="leA-py-8pw" customClass="YTPlayerView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MhO-5v-4Or">
                                 <rect key="frame" x="0.0" y="64" width="375" height="211"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="leA-py-8pw" secondAttribute="height" multiplier="16:9" id="oAs-0C-1Yv"/>
+                                    <constraint firstAttribute="width" secondItem="MhO-5v-4Or" secondAttribute="height" multiplier="16:9" id="ZYC-wV-MOx"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="q0Q-uD-4Ty">
@@ -107,24 +106,24 @@
                             <constraint firstAttribute="trailing" secondItem="lZE-R5-RFZ" secondAttribute="trailing" id="EkK-SW-FJr"/>
                             <constraint firstAttribute="trailing" secondItem="ooW-rE-y0h" secondAttribute="trailing" id="GFD-Rm-UEV"/>
                             <constraint firstItem="ooW-rE-y0h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="NEn-HD-7AQ"/>
+                            <constraint firstItem="MhO-5v-4Or" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RE1-n7-372"/>
+                            <constraint firstItem="MhO-5v-4Or" firstAttribute="top" secondItem="ooW-rE-y0h" secondAttribute="bottom" id="Ync-LF-VOJ"/>
                             <constraint firstAttribute="trailing" secondItem="q0Q-uD-4Ty" secondAttribute="trailing" id="b9b-Ik-R99"/>
-                            <constraint firstItem="q0Q-uD-4Ty" firstAttribute="top" secondItem="leA-py-8pw" secondAttribute="bottom" id="hBt-Sh-Z4P"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lZE-R5-RFZ" secondAttribute="bottom" id="leo-J4-FfF"/>
                             <constraint firstItem="ooW-rE-y0h" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" symbolic="YES" id="mVj-z7-Oe5"/>
                             <constraint firstItem="q0Q-uD-4Ty" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qKj-H1-gGD"/>
-                            <constraint firstItem="leA-py-8pw" firstAttribute="top" secondItem="ooW-rE-y0h" secondAttribute="bottom" id="t9V-5o-3Pd"/>
-                            <constraint firstAttribute="trailing" secondItem="leA-py-8pw" secondAttribute="trailing" id="uuP-oo-wvz"/>
-                            <constraint firstItem="leA-py-8pw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="w4X-L8-S4s"/>
+                            <constraint firstAttribute="trailing" secondItem="MhO-5v-4Or" secondAttribute="trailing" id="qw1-Qw-pZs"/>
+                            <constraint firstItem="q0Q-uD-4Ty" firstAttribute="top" secondItem="MhO-5v-4Or" secondAttribute="bottom" id="yYQ-Ys-E8S"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <outlet property="collectionView" destination="q0Q-uD-4Ty" id="PPZ-d6-Ffq"/>
+                        <outlet property="containerView" destination="MhO-5v-4Or" id="8tK-CX-Md5"/>
                         <outlet property="navBar" destination="ooW-rE-y0h" id="Fn4-E2-oI2"/>
                         <outlet property="navItem" destination="weC-SM-XVL" id="IKv-ip-DGx"/>
                         <outlet property="playButton" destination="ySS-7w-Nem" id="8Ll-P1-zmB"/>
-                        <outlet property="youtubeView" destination="leA-py-8pw" id="Dki-Me-eIf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -18,7 +18,7 @@ class YoutubePlayerManager: NSObject, YTPlayerViewDelegate {
         "controls": 1,
         "origin": "https://www.example.com",
         "modestbranding": 1,
-        "vq": "small",
+        "vq": "medium", // smallだと音質も明らかに下がる.
         ] as [String : Any]
     
     var isHardPlay = false
@@ -33,8 +33,30 @@ class YoutubePlayerManager: NSObject, YTPlayerViewDelegate {
     }
     var delegate: YoutubePlayerManageDelegate?
     
+    convenience init(containerView: UIView) {
+        // view Element
+        let playerView = YTPlayerView(frame: CGRect.zero)
+        playerView.translatesAutoresizingMaskIntoConstraints = false
+        // addsubview
+        containerView.addSubview(playerView)
+        
+        let consTop = NSLayoutConstraint(item: playerView, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .top, multiplier: 1.0, constant: 0.0)
+        let consBottom = NSLayoutConstraint(item: playerView, attribute: .bottom, relatedBy: .equal, toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+        let consLeft = NSLayoutConstraint(item: playerView, attribute: .left, relatedBy: .equal, toItem: containerView, attribute: .left, multiplier: 1.0, constant: 0.0)
+        let consRight = NSLayoutConstraint(item: playerView, attribute: .right, relatedBy: .equal, toItem: containerView, attribute: .right, multiplier: 1.0, constant: 0.0)
+        containerView.addConstraints([consTop, consBottom, consLeft, consRight])
+        
+        // PureLayoutで書けばこれくらいシンプルになるらしい。
+//        playerView.autoPinEdgeToSuperviewEdge(.Top)
+//        playerView.autoPinEdgeToSuperviewEdge(.Left)
+//        playerView.autoPinEdgeToSuperviewEdge(.Right)
+//        playerView.autoSetDimension(.Height, toSize: 380)
+        self.init(playerView: playerView)
+    }
+    
     init(playerView: YTPlayerView) {
         super.init()
+        
         youtubeView = playerView
         youtubeView.delegate = self
         

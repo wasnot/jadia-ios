@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import youtube_ios_player_helper
 import Firebase
 
 import AVFoundation
@@ -17,8 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var navBar: UINavigationBar!
-    @IBOutlet weak var youtubeView: YTPlayerView!
     @IBOutlet weak var playButton: UIBarButtonItem!
+    @IBOutlet weak var containerView: UIView!
     
     var settings: [String: Any] = ["roomId": "-KfA3ThcnZwJhcX0OIzA"]
     var songs: [String: [String: AnyObject]] = [:]
@@ -39,7 +38,7 @@ class ViewController: UIViewController {
         UIApplication.shared.beginReceivingRemoteControlEvents()
         navBar.delegate = self
         navItem.titleView = UIImageView(image: R.image.header())
-        playerManager = YoutubePlayerManager(playerView: youtubeView)
+        playerManager = YoutubePlayerManager(containerView: containerView)
         playerManager?.delegate = self
         
         let path = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("settings")
