@@ -13,7 +13,7 @@
 		AB098BCB1E70097900A6CABF /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB098BCA1E70097900A6CABF /* NavigationBar.swift */; };
 		AB0DBBF61E642C1D0018BCCD /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0DBBF51E642C1D0018BCCD /* SongCell.swift */; };
 		AB3F0FB91E8A3DFA00C75DD6 /* YoutubePlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3F0FB81E8A3DFA00C75DD6 /* YoutubePlayerManager.swift */; };
-		AB65C9AA1E950B6000D8001D /* AudioTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB65C9A91E950B6000D8001D /* AudioTap.swift */; };
+		AB456D611E9745A600880554 /* MYAudioTapProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = AB456D601E9745A600880554 /* MYAudioTapProcessor.m */; };
 		ABA095481E6013A3006D7C15 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABA095471E6013A3006D7C15 /* MediaPlayer.framework */; };
 		ABF7B37F1E5ED34E00C65557 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF7B37E1E5ED34E00C65557 /* AppDelegate.swift */; };
 		ABF7B3811E5ED34E00C65557 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF7B3801E5ED34E00C65557 /* ViewController.swift */; };
@@ -70,7 +70,9 @@
 		AB098BCA1E70097900A6CABF /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		AB0DBBF51E642C1D0018BCCD /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		AB3F0FB81E8A3DFA00C75DD6 /* YoutubePlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubePlayerManager.swift; sourceTree = "<group>"; };
-		AB65C9A91E950B6000D8001D /* AudioTap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTap.swift; sourceTree = "<group>"; };
+		AB456D5C1E97450300880554 /* AIDJ-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AIDJ-Bridging-Header.h"; sourceTree = "<group>"; };
+		AB456D5E1E97450400880554 /* MYAudioTapProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYAudioTapProcessor.h; sourceTree = "<group>"; };
+		AB456D601E9745A600880554 /* MYAudioTapProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYAudioTapProcessor.m; sourceTree = "<group>"; };
 		ABA095471E6013A3006D7C15 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		ABF7B37B1E5ED34E00C65557 /* AIDJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AIDJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF7B37E1E5ED34E00C65557 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AB456D5A1E97449C00880554 /* AudioTap */ = {
+			isa = PBXGroup;
+			children = (
+				AB456D5C1E97450300880554 /* AIDJ-Bridging-Header.h */,
+				AB456D5E1E97450400880554 /* MYAudioTapProcessor.h */,
+				AB456D601E9745A600880554 /* MYAudioTapProcessor.m */,
+			);
+			path = AudioTap;
+			sourceTree = "<group>";
+		};
 		ABA095461E6013A3006D7C15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,13 +156,13 @@
 		ABF7B3721E5ED34E00C65557 = {
 			isa = PBXGroup;
 			children = (
-				AB098BC81E70066A00A6CABF /* R.generated.swift */,
 				ABF7B37D1E5ED34E00C65557 /* AIDJ */,
 				ABF7B3921E5ED34E00C65557 /* AIDJTests */,
 				ABF7B39D1E5ED34F00C65557 /* AIDJUITests */,
-				ABF7B37C1E5ED34E00C65557 /* Products */,
 				ABA095461E6013A3006D7C15 /* Frameworks */,
 				74D5CA0E266F87304DEB0ADF /* Pods */,
+				ABF7B37C1E5ED34E00C65557 /* Products */,
+				AB098BC81E70066A00A6CABF /* R.generated.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,17 +179,17 @@
 		ABF7B37D1E5ED34E00C65557 /* AIDJ */ = {
 			isa = PBXGroup;
 			children = (
+				AB456D5A1E97449C00880554 /* AudioTap */,
 				ABF7B37E1E5ED34E00C65557 /* AppDelegate.swift */,
-				ABF7B3801E5ED34E00C65557 /* ViewController.swift */,
-				ABF7B3821E5ED34E00C65557 /* Main.storyboard */,
 				ABF7B3851E5ED34E00C65557 /* Assets.xcassets */,
-				ABF7B3871E5ED34E00C65557 /* LaunchScreen.storyboard */,
 				ABF7B38A1E5ED34E00C65557 /* Info.plist */,
-				AB0DBBF51E642C1D0018BCCD /* SongCell.swift */,
+				ABF7B3871E5ED34E00C65557 /* LaunchScreen.storyboard */,
+				ABF7B3821E5ED34E00C65557 /* Main.storyboard */,
 				AB098BCA1E70097900A6CABF /* NavigationBar.swift */,
-				AB3F0FB81E8A3DFA00C75DD6 /* YoutubePlayerManager.swift */,
+				AB0DBBF51E642C1D0018BCCD /* SongCell.swift */,
 				ABF99ECE1E72AB7000DD270E /* UIColor+extensions.swift */,
-				AB65C9A91E950B6000D8001D /* AudioTap.swift */,
+				ABF7B3801E5ED34E00C65557 /* ViewController.swift */,
+				AB3F0FB81E8A3DFA00C75DD6 /* YoutubePlayerManager.swift */,
 			);
 			path = AIDJ;
 			sourceTree = "<group>";
@@ -281,6 +293,7 @@
 					ABF7B37A1E5ED34E00C65557 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 58USB462J9;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -520,7 +533,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB65C9AA1E950B6000D8001D /* AudioTap.swift in Sources */,
 				AB098BCB1E70097900A6CABF /* NavigationBar.swift in Sources */,
 				ABF7B3811E5ED34E00C65557 /* ViewController.swift in Sources */,
 				AB0DBBF61E642C1D0018BCCD /* SongCell.swift in Sources */,
@@ -528,6 +540,7 @@
 				ABF7B37F1E5ED34E00C65557 /* AppDelegate.swift in Sources */,
 				AB098BC91E70066A00A6CABF /* R.generated.swift in Sources */,
 				ABF99ECF1E72AB7000DD270E /* UIColor+extensions.swift in Sources */,
+				AB456D611E9745A600880554 /* MYAudioTapProcessor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +582,7 @@
 				ABF7B3831E5ED34E00C65557 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		ABF7B3871E5ED34E00C65557 /* LaunchScreen.storyboard */ = {
@@ -577,6 +591,7 @@
 				ABF7B3881E5ED34E00C65557 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -626,7 +641,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = $OTHER_LDFLAGS;
+				OTHER_LDFLAGS = "$OTHER_LDFLAGS";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_INCLUDE_PATHS = "";
@@ -671,7 +686,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = $OTHER_LDFLAGS;
+				OTHER_LDFLAGS = "$OTHER_LDFLAGS";
 				SDKROOT = iphoneos;
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -684,6 +699,7 @@
 			baseConfigurationReference = 9D11944F95501A69DF1EDD4D /* Pods-AIDJ.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 58USB462J9;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = AIDJ/Info.plist;
@@ -691,6 +707,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ai.sensy.aidj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AIDJ/AIDJ-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -700,6 +718,7 @@
 			baseConfigurationReference = 63D0A6AF59F958C0494EF7D1 /* Pods-AIDJ.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 58USB462J9;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = AIDJ/Info.plist;
@@ -707,6 +726,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ai.sensy.aidj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AIDJ/AIDJ-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

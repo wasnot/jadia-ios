@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var playButton: UIBarButtonItem!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var volumeBar: UIProgressView!
+    @IBOutlet weak var volumeBar2: UIProgressView!
     
     var settings: [String: Any] = ["roomId": "-KfA3ThcnZwJhcX0OIzA"]
     var songs: [String: [String: AnyObject]] = [:]
@@ -31,6 +33,7 @@ class ViewController: UIViewController {
         }
     }
     var playerManager: YoutubePlayerManager?
+    var tapProcessor: MYAudioTapProcessor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,16 +175,25 @@ class ViewController: UIViewController {
     }
     
     func itemDidPlayToEndTime(notification: NSNotification) {
-        NSLog("itemDidPlayToEndTime: \(notification)")
+        NSLog("itemDidPlayToEndTime")
+//        NSLog("itemDidPlayToEndTime: \(notification)")
         let playerItem: AVPlayerItem? = notification.object as? AVPlayerItem
         let _: AVPlayer? = playerItem?.value(forKey: "player") as? AVPlayer
     }
     
     func itemBecameCurrentNotification(notification: NSNotification) {
-        NSLog("itemBecameCurrentNotification: \(notification)")
-        let playerItem: AVPlayerItem? = notification.object as? AVPlayerItem
+        NSLog("itemBecameCurrentNotification")
+//        NSLog("itemBecameCurrentNotification: \(notification)")
         
-        AudioTap.setAudioTap(playerItem: playerItem!)
+        guard let playerItem = notification.object as? AVPlayerItem else {
+            return
+        }
+        //        AudioTap.setAudioTap(playerItem: playerItem!)
+        if let _ = playerItem.asset.tracks as? [AVAssetTrack] {
+            tapProcessor = MYAudioTapProcessor(avPlayerItem: playerItem)
+            playerItem.audioMix = tapProcessor.audioMix
+            tapProcessor.delegate = self
+        }
     }
 }
 
@@ -239,5 +251,15 @@ extension ViewController: YoutubePlayerManageDelegate {
     }
     func playEnded() {
         nextSong()
+    }
+}
+
+extension ViewController: MYAudioTabProcessorDelegate {
+    
+    func audioTabProcessor(_ audioTabProcessor: MYAudioTapProcessor!, hasNewLeftChannelValue leftChannelValue: Float, rightChannelValue: Float) {
+//        print("volume: \(leftChannelValue) : \(rightChannelValue)")
+//        volumeSlider.value = leftChannelValue
+        volumeBar.setProgress(leftChannelValue, animated: true)
+        volumeBar2.setProgress(rightChannelValue, animated: true)
     }
 }
