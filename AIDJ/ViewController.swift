@@ -189,8 +189,8 @@ class ViewController: UIViewController {
             return
         }
         //        AudioTap.setAudioTap(playerItem: playerItem!)
-        if let _ = playerItem.asset.tracks as? [AVAssetTrack] {
-            tapProcessor = MYAudioTapProcessor(avPlayerItem: playerItem)
+        if let proc = MYAudioTapProcessor(avPlayerItem: playerItem) {
+            tapProcessor = proc
             playerItem.audioMix = tapProcessor.audioMix
             tapProcessor.delegate = self
         }
