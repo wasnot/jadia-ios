@@ -153,6 +153,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		ABF3DB4F1EC936A700ED3D23 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB098BCA1E70097900A6CABF /* NavigationBar.swift */,
+				AB0DBBF51E642C1D0018BCCD /* SongCell.swift */,
+				ABF7B3801E5ED34E00C65557 /* ViewController.swift */,
+			);
+			name = Views;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ABF3DB501EC936D100ED3D23 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ABF3DB511EC936EA00ED3D23 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AB3F0FB81E8A3DFA00C75DD6 /* YoutubePlayerManager.swift */,
+			);
+			name = Controller;
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		ABF7B3721E5ED34E00C65557 = {
 			isa = PBXGroup;
 			children = (
@@ -180,16 +208,15 @@
 			isa = PBXGroup;
 			children = (
 				AB456D5A1E97449C00880554 /* AudioTap */,
+				ABF3DB511EC936EA00ED3D23 /* Controller */,
+				ABF3DB501EC936D100ED3D23 /* Models */,
+				ABF3DB4F1EC936A700ED3D23 /* Views */,
 				ABF7B37E1E5ED34E00C65557 /* AppDelegate.swift */,
 				ABF7B3851E5ED34E00C65557 /* Assets.xcassets */,
 				ABF7B38A1E5ED34E00C65557 /* Info.plist */,
 				ABF7B3871E5ED34E00C65557 /* LaunchScreen.storyboard */,
 				ABF7B3821E5ED34E00C65557 /* Main.storyboard */,
-				AB098BCA1E70097900A6CABF /* NavigationBar.swift */,
-				AB0DBBF51E642C1D0018BCCD /* SongCell.swift */,
 				ABF99ECE1E72AB7000DD270E /* UIColor+extensions.swift */,
-				ABF7B3801E5ED34E00C65557 /* ViewController.swift */,
-				AB3F0FB81E8A3DFA00C75DD6 /* YoutubePlayerManager.swift */,
 			);
 			path = AIDJ;
 			sourceTree = "<group>";
@@ -641,7 +668,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = $OTHER_LDFLAGS;
+				OTHER_LDFLAGS = "$OTHER_LDFLAGS";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_INCLUDE_PATHS = "";
@@ -686,7 +713,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = $OTHER_LDFLAGS;
+				OTHER_LDFLAGS = "$OTHER_LDFLAGS";
 				SDKROOT = iphoneos;
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
